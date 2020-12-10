@@ -44,6 +44,14 @@ dev_dependencies:
 
   flutter_launcher_name: ^0.0.1
   flutter_launcher_icons: ^0.7.5
+
+  flutter_native_splash: ^0.1.9
+
+flutter_native_splash:
+  image: assets/logo.png
+  color: "E4E9F3"
+  fill: true
+
   
 flutter_launcher_name:
   name: "Monedero" # After set, run: flutter pub run flutter_launcher_name:main
