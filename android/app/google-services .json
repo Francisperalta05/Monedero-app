@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "227102273976",
+    "firebase_url": "https://monedero-b3669.firebaseio.com",
+    "project_id": "monedero-b3669",
+    "storage_bucket": "monedero-b3669.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:227102273976:android:371749dc9a41c114281f4d",
+        "android_client_info": {
+          "package_name": "com.example.monedero"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "227102273976-1jsbi564kbn3sk91l2cdd6mujs6qknmv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.monedero",
+            "certificate_hash": "1c5df1d94444ccf3d410b151d31f381f3bf9514b"
+          }
+        },
+        {
+          "client_id": "227102273976-di6gv7q4ek4v2tukn2ilf78i6hgi2em1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfVM1xq0cDuySt9QwFl2WLBRogrjApkn4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "227102273976-di6gv7q4ek4v2tukn2ilf78i6hgi2em1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
