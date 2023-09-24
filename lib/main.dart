@@ -16,6 +16,9 @@ class Monedero extends StatelessWidget {
       home: Home(),
       theme: ThemeData(
         primaryColor: Color(0xFFEB9622),
+        appBarTheme: AppBarTheme(
+          color: Color(0xFFEB9622),
+        ),
       ),
     );
   }

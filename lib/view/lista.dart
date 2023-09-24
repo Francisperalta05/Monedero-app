@@ -39,8 +39,8 @@ class _ListaState extends State<Lista> {
         builder: (context, AsyncSnapshot<List<ListaModel>> snapshot) {
           if (!snapshot.hasData) {
             return Shimmer.fromColors(
-              baseColor: Colors.grey[300],
-              highlightColor: Colors.grey[100],
+              baseColor: Colors.grey[300]!,
+              highlightColor: Colors.grey[100]!,
               enabled: true,
               child: ListView.builder(
                 itemBuilder: (_, __) => Padding(
@@ -92,10 +92,11 @@ class _ListaState extends State<Lista> {
             );
           } else {
             return ListView.builder(
-              itemCount: snapshot.data.length,
+              itemCount: snapshot.data!.length,
               itemBuilder: (_, i) {
                 return InkWell(
-                  onLongPress: () => _alertaEliminar(context, snapshot.data[i]),
+                  onLongPress: () =>
+                      _alertaEliminar(context, snapshot.data![i]),
                   child: Column(
                     children: [
                       Padding(
@@ -106,17 +107,17 @@ class _ListaState extends State<Lista> {
                           children: [
                             Container(
                               width: MediaQuery.of(context).size.width * 0.3,
-                              child: Text("${snapshot.data[i].nombre} "),
+                              child: Text("${snapshot.data![i].nombre} "),
                             ),
                             Container(
                               width: MediaQuery.of(context).size.width * 0.3,
-                              child: Text("RD\$ ${snapshot.data[i].precio} "),
+                              child: Text("RD\$ ${snapshot.data![i].precio} "),
                             ),
                             Spacer(),
                             Container(
                               width: MediaQuery.of(context).size.width * 0.3,
                               child: Text(
-                                "${DateFormat.yMMMEd().format(snapshot.data[i].fecha)} ${DateFormat('hh:mm a').format(snapshot.data[i].fecha)}",
+                                "${DateFormat.yMMMEd().format(snapshot.data![i].fecha)} ${DateFormat('hh:mm a').format(snapshot.data![i].fecha)}",
                               ),
                             ),
                           ],
@@ -140,11 +141,11 @@ class _ListaState extends State<Lista> {
       builder: (_) => AlertDialog(
         title: Text("Eliminar ${listaModel.nombre}"),
         actions: [
-          FlatButton(
+          TextButton(
             onPressed: () => Navigator.of(context).pop(),
             child: Text("No"),
           ),
-          FlatButton(
+          TextButton(
             onPressed: () async {
               await _provider.borrar(listaModel.id);
               Navigator.of(context).pop();

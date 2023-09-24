@@ -6,7 +6,7 @@ import 'package:monedero/util/sizes.dart';
 
 // ignore: must_be_immutable
 class PrecioTotal extends StatelessWidget {
-  String balance;
+  String? balance;
   PrecioTotal({
     this.balance,
   });
@@ -45,7 +45,7 @@ class PrecioTotal extends StatelessWidget {
               child: Text(
                 balance != null
                     ? balance.toString()
-                    : "RD\$ ${numberFormat.format(double.parse(_returnTotalAmount(snapshot.data)))}",
+                    : "RD\$ ${numberFormat.format(double.parse(_returnTotalAmount(snapshot.data ?? [])))}",
                 style: textos(
                   ctn: context,
                   fontWeight: FontWeight.w500,

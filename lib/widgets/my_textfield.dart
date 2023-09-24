@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:monedero/util/sizes.dart';
 
 class TxtCodika extends StatefulWidget {
-  final String label;
-  final String text;
+  final String? label;
+  final String? text;
   final bool isBorder;
   final bool isDense;
   final bool isFillColor;
@@ -15,24 +15,24 @@ class TxtCodika extends StatefulWidget {
   final TextEditingController txtController;
   final dynamic prefixIconF;
   final double prefixIconFZise;
-  final IconData suffixIconF;
-  final Widget suffixWi;
+  final IconData? suffixIconF;
+  final Widget? suffixWi;
   final double suffixIconFZise;
   final Color colorIcon;
-  final Stream txtStream;
-  final Function onChangedStream;
-  final Function(String) onChangedText;
-  final Function txtonTap;
+  final Stream? txtStream;
+  final Function(String)? onChangedStream;
+  final Function(String)? onChangedText;
+  final VoidCallback? txtonTap;
   final TextInputType inputType;
-  final FocusNode txtfocusNode;
+  final FocusNode? txtfocusNode;
   final EdgeInsets containerPadding;
   final int lineOnText;
   final String maskString;
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
   final TextAlign textAling;
-  final Color fillColor;
-  final Widget preffix;
-  final int maxLines;
+  final Color? fillColor;
+  final Widget? preffix;
+  final int? maxLines;
 
   const TxtCodika({
     this.label,
@@ -42,7 +42,7 @@ class TxtCodika extends StatefulWidget {
     this.txtPaddingAll = const EdgeInsets.all(0),
     this.containerPadding = const EdgeInsets.all(6),
     this.txtRadiusBorder = 10.0,
-    this.txtController,
+    required this.txtController,
     this.prefixIconF,
     this.prefixIconFZise = 20,
     this.suffixIconFZise = 20,
@@ -92,8 +92,7 @@ class _TxtCodika extends State<TxtCodika> {
                         ? widget.txtController
                         : null,
                     keyboardType: widget.inputType,
-                    decoration:
-                        _decoracion(widget.isBorder, snapshot.error, _focus),
+                    decoration: _decoracion(widget.isBorder, "", _focus),
                     onChanged: widget.onChangedStream,
                     onTap: widget.txtonTap,
                     style: (widget.textStyle == null)
@@ -114,10 +113,9 @@ class _TxtCodika extends State<TxtCodika> {
                 textAlign: widget.textAling,
                 inputFormatters: [maskFormatter],
                 // maxLines: widget.lineOnText,
-                controller:
-                    widget.txtController != null ? widget.txtController : null,
+                controller: widget.txtController,
                 keyboardType: widget.inputType,
-                decoration: _decoracion(widget.isBorder, null, _focus),
+                decoration: _decoracion(widget.isBorder, "", _focus),
                 obscureText: widget.isObscureText,
                 //bloc.changeEmail,
                 style: (widget.textStyle == null)

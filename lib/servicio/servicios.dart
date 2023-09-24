@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:monedero/models/lista_model.dart';
 
@@ -6,13 +7,15 @@ class Servicios {
   String _url = "https://monedero-b3669.firebaseio.com";
 
   Future<List<ListaModel>> lista() async {
-    final resp = await http.get("$_url/lista.json");
+    final resp = await http.get(Uri.parse("$_url/lista.json"));
+
+    log(resp.body);
 
     final Map<String, dynamic> decodedData = jsonDecode(resp.body);
 
     // final data = User.fromJson(decodedData);
 
-    final List<ListaModel> listas = new List();
+    final List<ListaModel> listas = [];
 
     decodedData.forEach((id, lista) {
       final listaTemp = ListaModel.fromJson(lista);
@@ -25,13 +28,13 @@ class Servicios {
   }
 
   Future<List<ListaModel>> balance() async {
-    final resp = await http.get("$_url/balance.json");
+    final resp = await http.get(Uri.parse("$_url/balance.json"));
 
     final Map<String, dynamic> decodedData = jsonDecode(resp.body);
 
     // final data = User.fromJson(decodedData);
 
-    final List<ListaModel> listas = new List();
+    final List<ListaModel> listas = [];
 
     decodedData.forEach((id, lista) {
       final listaTemp = ListaModel.fromJson(lista);
@@ -52,7 +55,7 @@ class Servicios {
 
     String body = json.encode(data);
     final resp = await http.post(
-      "$_url/lista.json",
+      Uri.parse("$_url/lista.json"),
       body: body,
     );
     print(resp.body);
@@ -61,7 +64,7 @@ class Servicios {
 
   Future<int> borrar(String id) async {
     final url = '$_url/lista/$id.json';
-    final resp = await http.delete(url);
+    final resp = await http.delete(Uri.parse(url));
 
     print(resp.body);
 
@@ -70,7 +73,7 @@ class Servicios {
 
   Future<bool> modificarBalance(ListaModel lista) async {
     final url = '$_url/balance/${lista.id}.json';
-    final resp = await http.put(url, body: listaToJson(lista));
+    final resp = await http.put(Uri.parse(url), body: listaToJson(lista));
     final decodedData = jsonDecode(resp.body);
 
     print(decodedData);
@@ -80,7 +83,7 @@ class Servicios {
 
   Future<bool> modificarTotal(ListaModel lista) async {
     final url = '$_url/balance/${lista.id}.json';
-    final resp = await http.put(url, body: listaToJson(lista));
+    final resp = await http.put(Uri.parse(url), body: listaToJson(lista));
     final decodedData = jsonDecode(resp.body);
 
     print(decodedData);

@@ -11,13 +11,13 @@ class Sizes {
 }
 
 TextStyle textos({
-  @required BuildContext ctn,
+  required BuildContext ctn,
   double fSize = 16,
   FontWeight fontWeight = FontWeight.normal,
-  Color color,
+  Color? color,
   String fontFamily = 'Inter',
-  double lineHeight,
-  double letterSpacing,
+  double? lineHeight,
+  double? letterSpacing,
 }) {
   return TextStyle(
     fontSize: Sizes(fSize).sizes(ctn),

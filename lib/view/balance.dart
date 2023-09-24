@@ -14,12 +14,12 @@ class Balance extends StatefulWidget {
 }
 
 class _BalanceState extends State<Balance> {
-  TextEditingController _precioController;
+  late TextEditingController _precioController;
   NumberFormat numberFormat = NumberFormat('#,##0.00');
 
   final _provider = Servicios();
 
-  List<TxtContent> _textField;
+  late List<TxtContent> _textField;
 
   @override
   void initState() {
@@ -105,14 +105,14 @@ class _BalanceState extends State<Balance> {
                     ),
                     onTap: () async {
                       setState(() {
-                        snapshot.data[0].precio =
+                        snapshot.data![0].precio =
                             int.parse(_precioController.text);
                       });
-                      await _provider.modificarBalance(snapshot.data[0]);
+                      await _provider.modificarBalance(snapshot.data![0]);
 
                       Navigator.of(context).pushAndRemoveUntil(
-                        FadeRoute(
-                          page: Home(),
+                        MaterialPageRoute(
+                          builder: (_) => Home(),
                         ),
                         (route) => false,
                       );
@@ -122,7 +122,7 @@ class _BalanceState extends State<Balance> {
                 Spacer(),
                 PrecioTotal(
                   balance:
-                      "RD\$ ${numberFormat.format(snapshot.data[0].precio)}",
+                      "RD\$ ${numberFormat.format(snapshot.data![0].precio)}",
                 ),
               ],
             );

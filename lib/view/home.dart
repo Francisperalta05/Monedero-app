@@ -104,20 +104,20 @@ class _HomeState extends State<Home> {
   void _funcion(BuildContext context, int id) {
     if (id == 0) {
       Navigator.of(context).push(
-        FadeRoute(
-          page: Balance(),
+        MaterialPageRoute(
+          builder: (_) => Balance(),
         ),
       );
     } else if (id == 1) {
       Navigator.of(context).push(
-        FadeRoute(
-          page: Agregar(),
+        MaterialPageRoute(
+          builder: (_) => Agregar(),
         ),
       );
     } else if (id == 2) {
       Navigator.of(context).push(
-        FadeRoute(
-          page: Lista(),
+        MaterialPageRoute(
+          builder: (_) => Lista(),
         ),
       );
     }
@@ -136,8 +136,8 @@ class _Botones {
   final IconData icon;
 
   _Botones({
-    this.id,
-    this.nombre,
-    this.icon,
+    required this.id,
+    required this.nombre,
+    required this.icon,
   });
 }

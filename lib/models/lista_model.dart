@@ -10,10 +10,10 @@ String listaToJson(ListaModel data) => json.encode(data.toJson());
 
 class ListaModel {
   ListaModel({
-    this.id,
-    this.nombre,
-    this.precio,
-    this.fecha,
+    required this.id,
+    required this.nombre,
+    required this.precio,
+    required this.fecha,
   });
 
   String id;
@@ -22,7 +22,7 @@ class ListaModel {
   DateTime fecha;
 
   factory ListaModel.fromJson(Map<String, dynamic> json) => ListaModel(
-        id: json["id"],
+        id: json["id"] ?? "",
         nombre: json["nombre"],
         precio: json["precio"],
         fecha: DateTime.parse(json["fecha"]),

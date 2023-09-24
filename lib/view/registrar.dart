@@ -10,10 +10,10 @@ class Agregar extends StatefulWidget {
 }
 
 class _AgregarState extends State<Agregar> {
-  TextEditingController _tituloController;
-  TextEditingController _precioController;
+  late TextEditingController _tituloController;
+  late TextEditingController _precioController;
 
-  List<TxtContent> _textField;
+  late List<TxtContent> _textField;
 
   final _provider = Servicios();
 
@@ -109,14 +109,14 @@ class _AgregarState extends State<Agregar> {
                     int.parse(_precioController.text),
                   );
                   setState(() {
-                    snapshot.data[0].precio -=
+                    snapshot.data![0].precio -=
                         int.parse(_precioController.text);
                   });
-                  _provider.modificarBalance(snapshot.data[0]);
+                  _provider.modificarBalance(snapshot.data![0]);
 
                   Navigator.of(context).pushAndRemoveUntil(
-                      FadeRoute(
-                        page: Home(),
+                      MaterialPageRoute(
+                        builder: (_) => Home(),
                       ),
                       (route) => false);
                 },
@@ -137,9 +137,9 @@ class TxtContent {
   TextInputType textInputType;
 
   TxtContent({
-    this.id,
-    this.title,
-    this.textEditingController,
-    this.textInputType,
+    required this.id,
+    required this.title,
+    required this.textEditingController,
+    required this.textInputType,
   });
 }
